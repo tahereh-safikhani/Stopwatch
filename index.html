@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        body{
+    background: #09b77c;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+}
+.container{
+    width: 800px;
+    margin: 30px auto;color: white;
+    text-align: center;
+}
+h1,h2,h3{
+    font-weight:100px; 
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.6rem;
+    text-transform: capitalize;
+}
+#second,
+#tens{
+    font-size: 2rem;
+
+}
+button{
+    width: 150px;
+    height: 50px;
+    background: transparent;
+    color: white;
+    border-radius: 5px;
+    margin-right: 10px;
+    outline: none;
+    border: 2px solid white;
+}
+button:hover{
+    background: white;
+    color: #09b77c;
+    font-weight: 800;
+    text-transform: capitalize;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="D:\New folder (3)\daylight-saving-time-with-alarm-clock_726237-430.jpg" alt="">
+        <h2>stopwatch</h2>
+        <p><span id="second">00</span>: <span id="tens">00</span></p>
+        <button id="button-start">start</button>
+        <button id="button-stop">stop</button>
+        <button id="button-reset">reset</button>
+    </div>
+    <!-- <script src="script.js"></script> -->
+
+    <script> 
+    var seconds=00;
+        var tens=00;
+        var appendTens=document.getElementById("tens");
+        var appendSeconds=document.getElementById("seconds");
+        var buttonStart=document.getElementById("button-start");
+        var buttonStop=document.getElementById("button-stop");
+        var buttonReset=document.getElementById("button-reset");
+        var interval; //to start timer values
+        
+        // function  will run wheen click on start
+        function starTimer(){
+            tens++;
+            if(tens<9){
+                appendTens.innerHTML="0"+tens;
+            }
+            if(tens>9){
+                appendTens.innerHTML=tens;
+        
+            }
+            if(tens>99){
+                seconds++;
+                appendSeconds.innerHTML="0"+seconds;
+                tens=0;
+                appendTens.innerHTML="0"+0;
+            }
+            if(seconds>9){
+                appendSeconds.innerHTML=seconds;
+            }
+        }
+        buttonStart.onclick=function(){
+            interval=setInterval(starTimer);
+        };
+        buttonStop.onclick=function(){
+            clearInterval(interval);
+            console.log(buttonStop)
+        };
+        buttonReset.onclick=function(){
+           clearInterval(interval);
+           tens="00";
+           seconds="00";
+           appendSeconds.innerHTML=seconds;
+           appendTens.innerHTML=tens;
+        //    console.log(buttonReset)
+        };</script>
+   
+
+</body>
+</html>
